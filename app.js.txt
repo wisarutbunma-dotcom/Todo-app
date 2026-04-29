@@ -1,0 +1,65 @@
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let filter = "all";
+
+function save() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function render() {
+  const list = document.getElementById("taskList");
+  list.innerHTML = "";
+
+  tasks
+    .filter(t => {
+      if (filter === "active") return t.status !== "done";
+      if (filter === "done") return t.status === "done";
+      return true;
+    })
+    .forEach((task, i) => {
+      const div = document.createElement("div");
+      div.className = "task " + (task.status === "done" ? "done" : "");
+
+      div.innerHTML = `
+        <div>${task.text}</div>
+        <button onclick="toggle(${i})">✔</button>
+      `;
+
+      list.appendChild(div);
+    });
+}
+
+function addTask() {
+  const input = document.getElementById("taskInput");
+  if (!input.value) return;
+
+  tasks.push({
+    text: input.value,
+    status: "active"
+  });
+
+  input.value = "";
+  closeModal();
+  save();
+  render();
+}
+
+function toggle(i) {
+  tasks[i].status = tasks[i].status === "done" ? "active" : "done";
+  save();
+  render();
+}
+
+function filterTasks(f) {
+  filter = f;
+  render();
+}
+
+function openModal() {
+  document.getElementById("modal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+render();

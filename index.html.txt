@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>งานของฉัน</h1>
+</header>
+
+<main id="taskList"></main>
+
+<button class="fab" onclick="openModal()">＋</button>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h2>เพิ่มงาน</h2>
+    <input id="taskInput" placeholder="พิมพ์งาน...">
+    <button onclick="addTask()">บันทึก</button>
+    <button onclick="closeModal()">ยกเลิก</button>
+  </div>
+</div>
+
+<nav>
+  <button onclick="filterTasks('all')">ทั้งหมด</button>
+  <button onclick="filterTasks('active')">ยังไม่ทำ</button>
+  <button onclick="filterTasks('done')">เสร็จ</button>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>
