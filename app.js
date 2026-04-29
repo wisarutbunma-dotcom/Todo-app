@@ -9,7 +9,7 @@ function addTask() {
   text.textContent = input.value;
 
   JavaScript
-  const del = document.createElement("button");
+  document.getElementById("list").appendChild(li);
   del.textContent = "ลบ";
   del.onclick = () => li.remove();
 
