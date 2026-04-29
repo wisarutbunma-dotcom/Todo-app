@@ -12,6 +12,7 @@ function addTask() {
   del.textContent = "ลบ";
   del.onclick = () => li.remove();
 
+  // กดเพื่อสำเร็จ
   text.onclick = () => {
     text.style.textDecoration = "line-through";
   };
