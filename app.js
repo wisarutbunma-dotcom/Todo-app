@@ -8,7 +8,7 @@ function addTask() {
   const text = document.createElement("span");
   text.textContent = input.value;
 
-  // ปุ่มลบ
+  JavaScript
   const del = document.createElement("button");
   del.textContent = "ลบ";
   del.onclick = () => li.remove();
